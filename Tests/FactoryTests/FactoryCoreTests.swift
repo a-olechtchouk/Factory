@@ -3,7 +3,6 @@ import XCTest
 
 @MainActor
 final class FactoryCoreTests: XCTestCase {
-
     override func setUp() {
         Container.shared.reset()
         CustomContainer.shared.reset()
@@ -167,7 +166,6 @@ final class FactoryCoreTests: XCTestCase {
         XCTAssertNotEqual(service3.id, service4.id)
     }
 
-    @MainActor
     func testCircularDependencyFailure() {
         let message = "FACTORY: Circular dependency chain - FactoryTests.RecursiveA > FactoryTests.RecursiveB > FactoryTests.RecursiveC > FactoryTests.RecursiveA"
         expectFatalError(expectedMessage: message) {
@@ -175,7 +173,6 @@ final class FactoryCoreTests: XCTestCase {
         }
     }
 
-    @MainActor
     func testStrictPromise() {
         // Expect non fatal error when strict and NOT in debug mode
         Container.shared.manager.promiseTriggersError = false
@@ -189,7 +186,6 @@ final class FactoryCoreTests: XCTestCase {
         }
     }
 
-    @MainActor
     func testStrictParameterPromise() {
         // Expect non fatal error when strict and NOT in debug mode
         Container.shared.manager.promiseTriggersError = false

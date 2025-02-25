@@ -9,9 +9,8 @@ import Foundation
 import XCTest
 @testable import Factory
 
+@MainActor
 extension XCTestCase {
-
-    @MainActor
     func expectFatalError(expectedMessage: String, testcase: @Sendable @escaping () -> Void ) {
         let expectation = self.expectation(description: "expectingFatalError")
         nonisolated(unsafe) var assertionMessage: String = ""
@@ -33,7 +32,6 @@ extension XCTestCase {
         }
     }
 
-    @MainActor
     func expectNonFatalError(testcase: @Sendable @escaping () -> Void) {
         let expectation = self.expectation(description: "expectingFatalError")
         nonisolated(unsafe) var assertionMessage: String = ""
