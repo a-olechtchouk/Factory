@@ -1,6 +1,7 @@
 import XCTest
 @testable import Factory
 
+@MainActor
 final class FactoryCoreTests: XCTestCase {
 
     override func setUp() {
